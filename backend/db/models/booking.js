@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { Sequelize } = require('.');
 module.exports = (sequelize, DataTypes) => {
   class Booking extends Model {
     /**
@@ -21,6 +22,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Booking.init({
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+    },
     spotId: {
         type: DataTypes.INTEGER,
         allowNull: false

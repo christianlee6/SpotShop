@@ -167,8 +167,8 @@ router.get("/current", requireAuth, async (req, res) => {
                 ]
             },
         ],
-
     });
+
 
     const bookingsList = []
 
