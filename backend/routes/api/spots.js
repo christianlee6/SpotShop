@@ -631,7 +631,7 @@ router.get("/", async (req, res) => {
         })
     } else {
         if (minLat && maxLat) where.lat = {[Op.between]: [minLat, maxLat]}
-        else if (minLat) where.last = {[Op.gte]: minLat}
+        else if (minLat) where.lat = {[Op.gte]: minLat}
         else if (maxLat) where.lat = {[Op.lte]: maxLat}
 
         if (minLng && maxLng) where.lng = {[Op.between]: [minLng, maxLng]}
