@@ -572,6 +572,9 @@ router.get("/:spotId", async (req, res) => {
     })
 
     spot.avgStarRating = Number((starRating / starCount).toFixed(2))
+    if (!spot.avgStarRating) {
+        spot.avgStarRating = "No average star rating available"
+    }
 
     spot.SpotImages = await SpotImage.findAll({
         attributes: ["id", "url", "preview"],
