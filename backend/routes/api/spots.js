@@ -1,4 +1,5 @@
 // backend/routes/api/spots.js
+require("pg").defaults.parseInt8 = true;
 const express = require("express");
 
 const { setTokenCookie, restoreUser } = require("../../utils/auth");
