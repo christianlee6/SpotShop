@@ -1,12 +1,14 @@
 'use strict';
 
-const { options } = require('../../routes');
+let options = {}
+if (process.env.NODE_ENV === 'production') {
+    options.schema = process.env.SCHEMA;  // define your schema in options object
+  }
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    options.tableName = "ReviewImages"
-    await queryInterface.createTable('ReviewImages', {
+    await queryInterface.createTable(options, 'ReviewImages', {
       id: {
         allowNull: false,
         autoIncrement: true,

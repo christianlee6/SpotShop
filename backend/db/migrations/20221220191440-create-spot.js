@@ -1,7 +1,7 @@
 'use strict';
 
-const { options } = require('../../routes');
 
+let options = {}
 if (process.env.NODE_ENV === 'production') {
     options.schema = process.env.SCHEMA;  // define your schema in options object
   }
@@ -9,8 +9,7 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    options.tableName = "Spots"
-    await queryInterface.createTable('Spots', {
+    await queryInterface.createTable(options, 'Spots', {
       id: {
         allowNull: false,
         autoIncrement: true,

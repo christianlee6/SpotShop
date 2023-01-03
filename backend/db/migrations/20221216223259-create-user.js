@@ -1,15 +1,15 @@
 'use strict';
 
-const { options } = require('../../routes');
+let options = {}
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
 }
 
 /** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
-    options.tableName = "Users"
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable(options, 'Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -48,10 +48,10 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       }
-    }, options);
+    });
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = "Users";
+    options.tableName = "Users"
     await queryInterface.dropTable(options);
   }
 };
