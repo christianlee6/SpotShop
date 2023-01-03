@@ -215,8 +215,12 @@ router.get("/current", requireAuth, async (req, res) => {
                 review.Spot.previewImage = image.url
             }
         });
-
         delete review.Spot.SpotImages
+
+        if (review.ReviewImages.length === 0) {
+            review.ReviewImages = "This review does not contain any images";
+        }
+
     })
 
     return res.json({
