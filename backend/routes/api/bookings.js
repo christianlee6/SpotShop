@@ -75,6 +75,15 @@ router.put("/:bookingId", requireAuth, async (req, res) => {
         })
     }
 
+    const ownerId = booking.userId;
+    if (ownerId !== userId) {
+        res.status(404);
+        return res.json({
+            message: "Forbidden",
+            statusCode: 404
+        })
+    }
+
     const bookingStartDate = new Date(booking.startDate)
     const bookingEndDate = new Date(booking.endDate)
     const todayDate = new Date ();
@@ -84,15 +93,6 @@ router.put("/:bookingId", requireAuth, async (req, res) => {
         return res.json({
             message: "Past bookings can't be modified",
             statusCode: 403
-        })
-    }
-
-    const ownerId = booking.userId;
-    if (ownerId !== userId) {
-        res.status(404);
-        return res.json({
-            message: "Forbidden",
-            statusCode: 404
         })
     }
 
