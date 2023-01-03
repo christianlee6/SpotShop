@@ -435,7 +435,7 @@ router.get("/current", requireAuth, async (req, res) => {
 });
 
 // GET ALL BOOKINGS FOR A SPOT BASED ON SPOT ID
-router.get("/:spotId/bookings", async (req, res) => {
+router.get("/:spotId/bookings", requireAuth, async (req, res) => {
     const { spotId } = req.params;
     const userId = req.user.id;
 
