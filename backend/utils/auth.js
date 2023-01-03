@@ -59,7 +59,7 @@ const requireAuth = [
     const err = new Error('Authentication required');
     err.title = 'Authentication required';
     err.errors = ['Authentication required'];
-    err.status = 403;
+    err.status = 401;
     return next(err);
   }
 ];
