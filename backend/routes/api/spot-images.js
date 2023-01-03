@@ -44,7 +44,7 @@ router.delete("/:imageId", requireAuth, async (req, res) => {
     }
 
     if (badSpotImage) {
-        await badImage.destroy();
+        await badSpotImage.destroy();
         res.status(200);
         return res.json({
             message: "Successfully deleted",
