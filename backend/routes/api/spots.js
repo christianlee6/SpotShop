@@ -584,6 +584,10 @@ router.get("/:spotId", async (req, res) => {
         }
     })
 
+    if (spot.SpotImages.length === 0) {
+        spot.SpotImages = "No images available"
+    }
+
     spot.Owner = await User.findOne({
         attributes: ["id", "firstName", "lastName"],
         where: {
