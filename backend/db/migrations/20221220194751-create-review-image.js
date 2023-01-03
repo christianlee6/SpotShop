@@ -5,6 +5,7 @@ const { options } = require('../../routes');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    options.tableName = "ReviewImages"
     await queryInterface.createTable('ReviewImages', {
       id: {
         allowNull: false,
