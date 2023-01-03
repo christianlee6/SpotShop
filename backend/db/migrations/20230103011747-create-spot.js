@@ -8,8 +8,8 @@ if (process.env.NODE_ENV === 'production') {
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable(options, 'Spots', {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('Spots', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -22,7 +22,6 @@ module.exports = {
         references: {
             model: "Users"
         },
-        onDelete: "cascade"
       },
       address: {
         type: Sequelize.STRING,
@@ -70,10 +69,10 @@ module.exports = {
         allowNull: false,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       }
-    });
+    }, options);
   },
-  async down(queryInterface, Sequelize) {
+  down: async (queryInterface, Sequelize) => {
     options.tableName = "Spots"
-    await queryInterface.dropTable(options);
+    await queryInterface.dropTable(options, options);
   }
 };
