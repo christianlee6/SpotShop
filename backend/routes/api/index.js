@@ -1,18 +1,17 @@
 // backend/routes/api/index.js
-const router = require('express').Router();
+const router = require("express").Router();
 const sessionRouter = require("./session");
 const usersRouter = require("./users");
 const spotsRouter = require("./spots");
 const reviewsRouter = require("./reviews");
 const bookingsRouter = require("./bookings");
-const spotImagesRouter = require("./spot-images")
-const reviewImagesRouter = require("./review-images")
+const spotImagesRouter = require("./spot-images");
+const reviewImagesRouter = require("./review-images");
 
-const { restoreUser } = require('../../utils/auth.js');
-const { setTokenCookie } = require('../../utils/auth.js');
-const { User } = require('../../db/models');
-const { requireAuth } = require('../../utils/auth.js');
-
+const { restoreUser } = require("../../utils/auth.js");
+const { setTokenCookie } = require("../../utils/auth.js");
+const { User } = require("../../db/models");
+const { requireAuth } = require("../../utils/auth.js");
 
 router.use(restoreUser);
 
@@ -26,45 +25,38 @@ router.use("/reviews", reviewsRouter);
 
 router.use("/bookings", bookingsRouter);
 
-router.use("/spot-images", spotImagesRouter)
+router.use("/spot-images", spotImagesRouter);
 
-router.use("/review-images", reviewImagesRouter)
+router.use("/review-images", reviewImagesRouter);
 
-router.post('/test', function(req, res) {
+router.post("/test", function (req, res) {
     res.json({ requestBody: req.body });
-  });
+});
 
-  router.get("/api/csrf/restore", (req, res) => {
+router.get("/api/csrf/restore", (req, res) => {
     const csrfToken = req.csrfToken();
     res.cookie("XSRF-TOKEN", csrfToken);
     res.status(200).json({
-      'XSRF-Token': csrfToken
+        "XSRF-Token": csrfToken,
     });
-  });
+});
 
-router.get(
-  '/restore-user',
-  (req, res) => {
+router.get("/restore-user", (req, res) => {
     return res.json(req.user);
-  }
-);
+});
 
-router.get(
-  '/require-auth',
-  requireAuth,
-  (req, res) => {
+router.get("/require-auth", requireAuth, (req, res) => {
     return res.json(req.user);
-  }
-);
+});
 
-router.get('/set-token-cookie', async (_req, res) => {
-  const user = await User.findOne({
-      where: {
-        username: 'Demo-lition'
-      }
+router.get("/set-token-cookie", async (_req, res) => {
+    const user = await User.findOne({
+        where: {
+            username: "Demo-lition",
+        },
     });
-  setTokenCookie(res, user);
-  return res.json({ user: user });
+    setTokenCookie(res, user);
+    return res.json({ user: user });
 });
 
 module.exports = router;
