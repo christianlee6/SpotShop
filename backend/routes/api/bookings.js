@@ -101,9 +101,9 @@ router.put("/:bookingId", requireAuth, async (req, res) => {
         return res.json({
             message: "Validation error",
             statusCode: 400,
-            errors: {
-                endDate: "endDate cannot come before startDate",
-            }
+            errors: [
+                "endDate cannot come before startDate",
+            ]
         })
     }
 
@@ -126,10 +126,11 @@ router.put("/:bookingId", requireAuth, async (req, res) => {
             return res.json({
                 message: "Sorry, this spot is already booked for the specified dates",
                 statusCode: 403,
-                errors: {
-                    startDate: "Start date conflicts with an existing booking",
-                    endDate: "End date conflicts with an existing booking"
-                }
+                errors: [
+                    "Start date conflicts with an existing booking",
+                    "End date conflicts with an existing booking"
+                ]
+
             })
         }
     })

@@ -32,10 +32,11 @@ router.post(
         return res.json({
             message: "Validation error",
             statusCode: 400,
-            errors: {
-                credential: "Email or username is required",
-                password: "Password is required"
-            }
+            errors: [
+                "Email or username is required",
+                "Password is required"
+
+            ]
         })
       }
 

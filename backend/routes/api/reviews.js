@@ -97,19 +97,19 @@ router.put("/:reviewId", requireAuth, async (req, res) => {
     let errObj = {
         message: "Validation error",
         statusCode: 400,
-        errors: {}
+        errors: []
     }
 
     if (!review) {
-        errObj.errors.review = "Review text is required"
+        errObj.errors.push("Review text is required")
     }
 
     if (!stars) {
-        errObj.errors.stars = "Star rating is required"
+        errObj.errors.push("Star rating is required")
     }
 
     if (stars < 1 || stars > 5) {
-        errObj.errors.starsInteger = "Stars must be an integer from 1 to 5"
+        errObj.errors.push("Stars must be an integer from 1 to 5")
     }
 
     if (!review || !stars || stars < 1 || stars > 5) {
@@ -213,7 +213,7 @@ router.get("/current", requireAuth, async (req, res) => {
         review.Spot.SpotImages.forEach(image => {
             if (image.preview === true) {
                 review.Spot.previewImage = image.url
-            } 
+            }
         });
         delete review.Spot.SpotImages
 
