@@ -15,34 +15,41 @@ router.post("/", async (req, res) => {
     let errObj = {
         message: "Validation error",
         statusCode: 400,
-        errors: {},
+        errors: [],
     };
 
     if (!email || !email.includes("@")) {
-        errObj.errors.email = "Invalid email";
+        errObj.errors.push("Invalid email");
     }
 
     if (!username || !username.length) {
-        errObj.errors.username = "Username is required";
+        errObj.errors.push("Username is required");
     }
 
     if (username) {
         if (username.length < 4) {
-            errObj.errors.username = "Username must be at least 4 characters"
+            errObj.errors.push("Username must be at least 4 characters");
         }
     }
 
     if (!firstName) {
-        errObj.errors.firstName = "First Name is required";
+        errObj.errors.push("First Name is required");
     }
 
     if (!lastName) {
-        errObj.errors.lastName = "Last Name is required";
+        errObj.errors.push("Last Name is required");
     }
 
-    if (!email || !username || username.length < 5 || !firstName || !lastName || !email.includes("@")) {
-        res.status(400)
-        return res.json(errObj)
+    if (
+        !email ||
+        !username ||
+        username.length < 5 ||
+        !firstName ||
+        !lastName ||
+        !email.includes("@")
+    ) {
+        res.status(400);
+        return res.json(errObj);
     }
 
     let usersList = [];
@@ -59,10 +66,10 @@ router.post("/", async (req, res) => {
             return res.json({
                 message: "User already exists",
                 statusCode: 403,
-                errors: {
-                    email: "User with that email already exists",
-                    username: "User with that username already exists",
-                },
+                errors: [
+                    "User with that email already exists",
+                    "User with that username already exists",
+                ],
             });
         }
     });
@@ -74,9 +81,7 @@ router.post("/", async (req, res) => {
             return res.json({
                 message: "User already exists",
                 statusCode: 403,
-                errors: {
-                    email: "User with that email already exists",
-                },
+                errors: ["User with that email already exists"],
             });
         }
     });
@@ -88,9 +93,9 @@ router.post("/", async (req, res) => {
             return res.json({
                 message: "User already exists",
                 statusCode: 403,
-                errors: {
-                    email: "User with that username already exists",
-                },
+                errors: [
+                    "User with that username already exists",
+                ]
             });
         }
     });
@@ -106,8 +111,7 @@ router.post("/", async (req, res) => {
     await setTokenCookie(res, user);
 
     return res.json(user);
-
-})
+});
 
 // const validateSignup = [
 //     check('email')
@@ -128,7 +132,5 @@ router.post("/", async (req, res) => {
 //       .withMessage('Password must be 6 characters or more.'),
 //     handleValidationErrors
 //   ];
-
-
 
 module.exports = router;

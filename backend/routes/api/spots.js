@@ -52,9 +52,9 @@ router.post("/:spotId/bookings", requireAuth, async (req, res) => {
         return res.json({
             message: "Validation error",
             statusCode: 400,
-            errors: {
-                endDate: "endDate cannot be on or before startDate.",
-            },
+            errors: [
+                "endDate cannot be on or before startDate.",
+            ]
         });
     }
 
@@ -77,10 +77,10 @@ router.post("/:spotId/bookings", requireAuth, async (req, res) => {
             return res.json({
                 message: "Sorry, this spot is already booked for the specified dates",
                 statusCode: 403,
-                errors: {
-                    startDate: "Start date conflicts with an existing booking",
-                    endDate: "End date conflicts with an existing booking"
-                }
+                errors: [
+                    "Start date conflicts with an existing booking",
+                    "End date conflicts with an existing booking"
+                ]
             })
         }
     })
@@ -132,15 +132,15 @@ router.post("/:spotId/reviews", requireAuth, async (req, res) => {
     let errObj = {
         message: "Validation error",
         statusCode: 400,
-        errors: {},
+        errors: [],
     };
 
     if (!review) {
-        errObj.errors.review = "Review text is required";
+        errObj.errors.push("Review text is required")
     }
 
     if (!stars || stars > 5 || stars < 1) {
-        errObj.errors.stars = "Stars must be an integer from 1 to 5";
+        errObj.errors.push("Stars must be an integer from 1 to 5")
     }
 
     if (!review || !stars || stars > 5 || stars < 1) {
@@ -236,32 +236,32 @@ router.put("/:spotId", requireAuth, async (req, res, next) => {
     const errObj = {
         message: "Validation Error",
         statusCode: 400,
-        errors: {}
+        errors: []
     }
 
-    if (!address) errObj.errors.address = "Street address is required"
+    if (!address) errObj.errors.push("Street address is required")
 
-    if (!city) errObj.errors.city = "City is required"
+    if (!city) errObj.errors.push("City is required")
 
-    if (!state) errObj.errors.state = "State is required"
+    if (!state) errObj.errors.push("State is required")
 
-    if (!country) errObj.errors.country = "Country is required"
+    if (!country) errObj.errors.push("Country is required")
 
-    if (!lat) errObj.errors.lat = "Latitude is not valid"
+    if (!lat) errObj.errors.push("Latitude is not valid")
 
-    if (!lng) errObj.errors.lng = "Longitude is not valid"
+    if (!lng) errObj.errors.push("Longitude is not valid")
 
-    if (!name) errObj.errors.name = "Name is required"
+    if (!name) errObj.errors.push("Name is required")
 
     if (name) {
         if (name.length >= 50) {
-            errObj.errors.name = "Name must be less than 50 characters"
+            errObj.errors.push("Name must be less than 50 characters")
         }
     }
 
-    if (!description) errObj.errors.description = "Description is required"
+    if (!description) errObj.errors.push("Description is required")
 
-    if (!price) errObj.errors.price = "Price per day is required"
+    if (!price) errObj.errors.push("Price per day is required")
 
     if (!address || !city || !state || !country || !lat || !lng || !name || name.length >= 50 || !description || !price) {
         res.status(400)
@@ -304,49 +304,49 @@ router.post("/", requireAuth, async (req, res) => {
     let errObj = {
         message: "Validation Error",
         statusCode: 400,
-        errors: {},
+        errors: [],
     };
 
     if (!address) {
-        errObj.errors.address = "Street address is required";
+        errObj.errors.push("Street address is required")
     }
 
     if (!city) {
-        errObj.errors.city = "City is required";
+        errObj.errors.push("City is required")
     }
 
     if (!state) {
-        errObj.errors.state = "State is required";
+        errObj.errors.push("State is required")
     }
 
     if (!country) {
-        errObj.errors.country = "Country is required";
+        errObj.errors.push("Country is required")
     }
 
     if (!lat) {
-        errObj.errors.lat = "Latitude is not valid";
+        errObj.errors.push("Latitude is not valid")
     }
 
     if (!lng) {
-        errObj.errors.lng = "Longitude is not valid";
+        errObj.errors.push("Longitude is not valid")
     }
 
     if (!name) {
-        errObj.errors.name = "Name is required"
+        errObj.errors.push("Name is required")
     }
 
     if (name) {
         if (name.length >= 50) {
-            errObj.errors.name = "Name must be less than 50 characters"
+            errObj.errors.push("Name must be less than 50 characters")
         }
     }
 
     if (!description) {
-        errObj.errors.description = "Description is required";
+        errObj.errors.push("Description is required")
     }
 
     if (!price) {
-        errObj.errors.price = "Price per day is required";
+        errObj.errors.push("Price per day is required")
     }
 
     if (
@@ -618,16 +618,16 @@ router.get("/", async (req, res) => {
         return res.json({
             message: "Validation Error",
             statusCode: 400,
-            errors: {
-                "page": "Page must be greater than or equal to 1",
-                "size": "Size must be greater than or equal to 1",
-                "maxLat": "Maximum latitude is invalid",
-                "minLat": "Minimum latitude is invalid",
-                "minLng": "Maximum longitude is invalid",
-                "maxLng": "Minimum longitude is invalid",
-                "minPrice": "Maximum price must be greater than or equal to 0",
-                "maxPrice": "Minimum price must be greater than or equal to 0"
-            }
+            errors: [
+                "Page must be greater than or equal to 1",
+                "Size must be greater than or equal to 1",
+                "Maximum latitude is invalid",
+                "Minimum latitude is invalid",
+                "Maximum longitude is invalid",
+                "Minimum longitude is invalid",
+                "Maximum price must be greater than or equal to 0",
+                "Minimum price must be greater than or equal to 0"
+            ]
         })
     } else {
         if (minLat && maxLat) where.lat = {[Op.between]: [minLat, maxLat]}
