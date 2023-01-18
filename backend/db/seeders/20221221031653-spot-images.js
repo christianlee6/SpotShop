@@ -11,32 +11,32 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
       {
         spotId: 1,
-        url: "www.this-is-a-spot-image-url.com",
+        url: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         preview: false
       },
       {
         spotId: 1,
-        url: "www.spot-image-url.com",
+        url: "https://images.pexels.com/photos/298842/pexels-photo-298842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         preview: true
       },
       {
         spotId: 2,
-        url: "www.this-is-also-a-spot-image-url.com",
+        url: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         preview: true
       },
       {
         spotId: 3,
-        url: "www.this-is-another-spot-image-url.com",
+        url: "https://images.pexels.com/photos/53610/large-home-residential-house-architecture-53610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         preview: true
       },
       {
         spotId: 4,
-        url: "www.spot-image-url.com",
-        preview: false
+        url: "https://www.investopedia.com/thmb/Po5mgtwHvoMBw97fDcEaiuOWMGQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1002993164-bc84ffb3d31c43b087ab3342c97af0fa.jpg",
+        preview: true
       },
       {
         spotId: 2,
-        url: "www.another-spot-image-url.com",
+        url: "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         preview: true
       },
     ], {});

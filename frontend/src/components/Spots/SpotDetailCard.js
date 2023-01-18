@@ -25,8 +25,8 @@ const SpotDetailCard = (spot) => {
                             {isNaN(rating) ? "No Reviews" : rating}
                         </span>
                     </span>
-                    <span style={{ fontSize: "12px", color: "gray"}}>{distances[`${spot.id}`]} miles away</span>
-                    <div style={{ fontSize: "12px", color: "white" }}>
+                    <span style={{ fontSize: "12px", color: "grey"}}>{distances[`${spot.id}`]} miles away</span>
+                    <div style={{ fontSize: "12px", color: "black" }}>
                         <span style={{ fontWeight: "bold", fontSize: "12px" }}>
                             ${spot.price}{" "}
                         </span>
@@ -36,6 +36,6 @@ const SpotDetailCard = (spot) => {
             </Link>
         </div>
     );
-};
+};  
 
 export default SpotDetailCard;

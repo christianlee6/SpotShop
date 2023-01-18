@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/christianlee6/API-Project/issues"
   },
-  "homepage": "https://github.com/christianlee6/API-Project#readme"
+  "homepage": "https://github.com/christianlee6/API-Project#readme",
+  "dependencies": {
+    "@fontsource/montserrat": "^4.5.13"
+  }
 }

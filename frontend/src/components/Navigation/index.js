@@ -6,6 +6,7 @@ import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
+import logo from './images/logo.png'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -33,12 +34,23 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-      </li>
-      {isLoaded && sessionLinks}
-    </ul>
+    <div className='nav-bar-wrapper'>
+        <div className='nav-bar'>
+            <div>
+                <NavLink exact to="/" className={"home-link"}>
+                    <img style={{"height": "65px", "width":"65px"}} src={logo}></img>
+                </NavLink>
+            </div>
+            <div style={{"width": "50px"}}></div>
+            {isLoaded && (
+                <div style={{"display": "flex", "alignItems": "center", "gap": "20px"}}>
+
+                <NavLink to='/new' style={{textDecoration: "none", color: 'black', fontSize: "12.5px"}}>Shop Your Home Now</NavLink>
+                <ProfileButton user={sessionUser} />
+                </div>
+            )}
+        </div>
+    </div>
   );
 }
 
