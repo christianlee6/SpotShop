@@ -525,7 +525,8 @@ router.get("/:spotId/reviews", async (req, res) => {
 
     Reviews.forEach((review) => {
         if (review.ReviewImages.length === 0) {
-            review.ReviewImages = "This review does not contain any images";
+            // review.ReviewImages = "This review does not contain any images";
+            review.ReviewImages = []
         }
     });
 

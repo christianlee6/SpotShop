@@ -1,41 +1,51 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./SpotDetailCard.css";
+import noimage from './images/noimage.png'
 
-const SpotDetailCard = (spot) => {
+const SpotDetailCard = ({spot}) => {
     const rating = spot.avgRating;
 
     if (!spot) return null;
 
-    const distances = [113, 224, 512, 581, 223, 594, 918, 192, 108, 295]
+    // const distances = [113, 224, 512, 581, 223, 594, 918, 192, 108, 295]
 
     return (
-        <div className="spot-card">
-            <Link to={`/spots/${spot.id}`} style={{ textDecoration: "none" }}>
-                <img
-                    className={"image"}
-                    src={spot.previewImage}
-                    alt="sample"
-                ></img>
-                <div>
-                    <span className="location">
-                        {spot.city}, {spot.state}
-                        <span style={{ fontWeight: "normal" }}>
-                            <i className="fa-sharp fa-solid fa-star"></i>
-                            {isNaN(rating) ? "No Reviews" : rating}
-                        </span>
-                    </span>
-                    <span style={{ fontSize: "12px", color: "grey"}}>{distances[`${spot.id}`]} miles away</span>
-                    <div style={{ fontSize: "12px", color: "black" }}>
-                        <span style={{ fontWeight: "bold", fontSize: "12px" }}>
-                            ${spot.price}{" "}
-                        </span>
-                        night
-                    </div>
-                </div>
-            </Link>
-        </div>
+        <div>
+        <Link style={{ textDecoration: "none", color: "black" }} to={`/spots/${spot.id}`}>
+
+          <div className="allspots-spot-image-container">
+          {spot.previewImage ?
+            (<div><img src={spot.previewImage} /></div>) :
+            (<div><img src={noimage} alt="noimage" /></div>)
+          }
+          </div>
+
+          <div className="allspots-spot-info">
+
+            <div className="allspots-spot-header">
+              <div className="allspots-spot-location">
+                {spot.city}, {spot.state}
+              </div>
+
+              <div className="allspots-spot-rating">
+                {spot.avgRating === "No average rating available" ?
+                  (<span>★ None</span>):
+                  (<span>★ {spot.avgRating}</span>)
+                }
+              </div>
+            </div>
+            <div className="allspots-spot-country">
+              {spot.country}
+            </div>
+            <div className="allspots-spot-price">
+              ${spot.price} <span>night</span>
+            </div>
+          </div>
+
+        </Link>
+      </div>
     );
-};  
+};
 
 export default SpotDetailCard;

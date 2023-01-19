@@ -1,155 +1,206 @@
+import LoadUserSpots from "../components/Spots/LoadUserSpots";
 import { csrfFetch } from "./csrf";
 
-const CREATE = "spots/CREATE";
-const SINGLE = "spots/SINGLE";
-const LOAD = "spots/LOAD";
-const UPDATE = "spots/UPDATE";
-const DELETE = "spots/DELETE";
+const LOAD_ALL_SPOTS = "spots/LOAD_ALL_SPOTS";
+const LOAD_USER_SPOTS = "spots/LOAD_USER_SPOTS"
+const LOAD_SINGLE_SPOT = "spots/LOAD_SINGLE_SPOT";
+const CREATE_SPOT = "spots/CREATE_SPOT";
+const UPDATE_SPOT = "spots/UPDATE_SPOT";
+const DELETE_SPOT = "spots/DELETE_SPOT";
+const ADD_SPOT_IMAGE = "spots/ADD_SPOT_IMAGE"
+const RESET_SPOTS = "spots/RESET_SPOTS";
 
-const createSpot = (spot) => {
+const loadAllSpots = (spots) => {
     return {
-        type: CREATE,
-        spot,
-    };
-};
-
-const loadSpots = (spots) => {
-    return {
-        type: LOAD,
+        type: LOAD_ALL_SPOTS,
         spots,
     };
 };
 
-const singleSpot = (spot) => {
+const loadUserSpots = (spots) => {
     return {
-        type: SINGLE,
+        type: LOAD_USER_SPOTS,
+        spots
+    }
+}
+
+const loadSingleSpot = (spot) => {
+    return {
+        type: LOAD_SINGLE_SPOT,
+        spot
+    }
+}
+
+const createSpot = (spot) => {
+    return {
+        type: CREATE_SPOT,
         spot,
     };
 };
 
 const updateSpot = (spot) => {
     return {
-        type: UPDATE,
+        type: UPDATE_SPOT,
         spot,
     };
 };
 
-const deleteSpot = (spot) => {
+const deleteSpot = (spotId) => {
     return {
-        type: DELETE,
-        spot,
+        type: DELETE_SPOT,
+        spotId,
     };
 };
 
-export const createSpotThunk = (spot, spotImage) => async (dispatch) => {
-    spot.lat = 30;
-    spot.lng = 60;
-    const response = await csrfFetch("/api/spots", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(spot),
-    });
-
-    if (response.ok) {
-        const spot = await response.json();
-        const imageResponse = await csrfFetch(`/api/spots/${spot.id}/images`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(spotImage),
-        });
-
-        if (imageResponse.ok) {
-            const image = await imageResponse.json();
-            spot.previewImage = image.url;
-            dispatch(createSpot(spot));
-        }
+const addSpotImage = (image) => {
+    return {
+        type: ADD_SPOT_IMAGE,
+        image
     }
+}
+
+export const resetSpots = () => {
+    return {
+        type: RESET_SPOTS,
+    };
 };
 
-export const getAllSpots = () => async (dispatch) => {
+export const getAllSpotsThunk = () => async (dispatch) => {
     const response = await fetch("/api/spots");
 
     if (response.ok) {
         const spots = await response.json();
-        dispatch(loadSpots(spots));
+        dispatch(loadAllSpots(spots))
     }
 };
 
-export const getSpotsOfUser = () => async (dispatch) => {
+export const getSpotsOfUserThunk = () => async (dispatch) => {
     const response = await fetch("/api/spots/current");
 
     if (response.ok) {
-        const spotsOfUser = await response.json();
-        return spotsOfUser;
+        const spots = await response.json();
+        dispatch(loadUserSpots(spots));
     }
 };
 
-export const getSpotById = (id) => async (dispatch) => {
-    const response = await fetch(`/api/spots/${id}`);
+export const getOneSpotThunk = (spotId) => async (dispatch) => {
+    const response = await fetch(`/api/spots/${spotId}`);
 
     if (response.ok) {
         const spot = await response.json();
-        dispatch(singleSpot(spot));
+        dispatch(loadSingleSpot(spot));
     }
 };
 
-export const updateSpotThunk =
-    (id, spot, url, avgRating) => async (dispatch) => {
-        const response = await csrfFetch(`/api/spots/${id}`, {
+export const createSpotThunk = (spotInfo, imageInfo) => async (dispatch) => {
+    const response = await csrfFetch("/api/spots", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(spotInfo),
+    });
+
+    if (response.ok) {
+        const newSpot = await response.json();
+        dispatch(createSpot(newSpot))
+        return newSpot
+    }
+};
+
+export const editSpotThunk =
+    (mySpot, spotId) => async (dispatch) => {
+        const response = await csrfFetch(`/api/spots/${spotId}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(spot),
+            body: JSON.stringify(mySpot),
         });
 
         if (response.ok) {
             const spot = await response.json();
-            spot.previewImage = url || null;
-            spot.avgRating = avgRating;
-            dispatch(updateSpot(spot));
-            return spot;
+            dispatch(updateSpot(spot))
+            return spot
         }
     };
 
-export const deleteSpotThunk = (id) => async (dispatch) => {
-    const response = await csrfFetch(`/api/spots/${id}`, {
+export const deleteSpotThunk = (spotId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
     });
 
     if (response.ok) {
-        const spot = await response.json();
-        dispatch(deleteSpot(spot));
-        return spot;
+        dispatch(deleteSpot(spotId))
     }
 };
+
+export const addSpotImageThunk = (spotId, imageObj) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(imageObj)
+    })
+
+    if (response.ok) {
+        const image = await response.json()
+        dispatch(addSpotImage(image))
+        return image
+    }
+}
 
 const initialState = { allSpots: {}, singleSpot: {} };
 
 const spotsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
-        case CREATE:
-            newState = { ...state, allSpots: { ...state.allSpots } };
-            newState.allSpots[action.spot.id] = action.spot;
-            return newState;
-        case LOAD:
-            newState = { ...state, allSpots: { ...state.allSpots } };
-            action.spots.Spots.forEach((spot) => {
-                newState.allSpots[spot.id] = spot;
-            });
-            return newState;
-        case SINGLE:
-            newState = { ...state, allSpots: { ...state.allSpots } };
-            newState.singleSpot = action.spot;
-            return newState;
-        case UPDATE:
-            newState = {...state, allSpots: {...state.allSpots}}
-            newState.allSpots[action.spot.id] = action.spot
+        case LOAD_ALL_SPOTS:
+            newState = {...state}
+            const normalizedSpots = {}
+            action.spots.Spots.forEach((spot) => normalizedSpots[spot.id] = spot)
+            newState.allSpots = normalizedSpots
+            newState.singleSpot = {}
             return newState
-        case DELETE:
-            newState = {...state, allSpots: {...state.allSpots}}
-            delete newState.allSpots[action.id]
+
+        case LOAD_USER_SPOTS:
+            newState = {...state}
+            const normalizedUserSpots = {}
+            action.spots.Spots.forEach((spot) => normalizedUserSpots[spot.id] = spot)
+            newState.allSpots = normalizedUserSpots
             return newState
+
+        case LOAD_SINGLE_SPOT:
+            newState = {...state}
+            newState.singleSpot = action.spot
+            return newState
+
+        case CREATE_SPOT:
+            newState = {...state}
+            newState.allSpots = {...state.allSpots, [action.spot.id]: action.spot}
+            return newState
+
+        case UPDATE_SPOT:
+            newState = {...state}
+            const updatedSpot = {...newState.allSpots[action.spot.id], ...action.spot}
+            newState.singleSpot = {...state.singleSpot, ...updateSpot}
+            newState.allSpots = {...state.allSpots, [action.spot.id]: updatedSpot}
+            return newState
+
+        case DELETE_SPOT:
+            newState = {...state}
+            newState.allSpots = {...state.singleSpot}
+            delete newState.allSpots[action.spotId]
+            if (newState.singleSpot.id === action.spotId) newState.singleSpot = {}
+            return newState
+
+        case ADD_SPOT_IMAGE:
+            newState = {...state}
+            newState.allSpots = {...state.allSpots}
+            newState.singleSpot = {...state.singleSpot}
+            newState.singleSpot.SpotImages = [action.image]
+            return newState
+
+        case RESET_SPOTS:
+            newState = {...state}
+                newState.allSpots = {}
+            return newState
+
         default:
             return state;
     }

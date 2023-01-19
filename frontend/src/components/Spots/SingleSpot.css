@@ -1,0 +1,121 @@
+.single-spot-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 12vw;
+    margin-bottom: 80px;
+}
+
+.single-spot-header-name {
+    margin-top: 40px;
+    margin-bottom: 5px;
+}
+
+.single-spot-header-detail {
+    margin-top: -14px;
+    margin-bottom: 20px;
+}
+
+.single-spot-header-detail span {
+    font-size: 15px;
+    margin-right: 5px;
+    font-weight: 500;
+}
+
+.single-spot-image-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 450px;
+}
+
+.single-spot-preview-image {
+    max-height: 450px;
+    object-fit: cover;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    min-height: 450px;
+}
+
+.single-spot-other-images-container {
+    display: grid;
+    grid-template: 1fr 1fr/ 1fr 1fr;
+    gap: 6px;
+    height: 450px;
+}
+
+.single-spot-other-image {
+    min-height: 100%;
+    max-height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.single-spot-bottom-images {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px
+}
+
+.single-spot-bottom-left h2 {
+    margin-top: 40px;
+}
+
+.single-spot-linebreak {
+    display: flex;
+    background-color: rgb(96, 123, 198, 0.2);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 98%;
+    height: 1px;
+}
+
+.aircover {
+    width: 120px;
+    height: 25px;
+    display: flex;
+    padding-bottom: 15px;
+}
+
+.single-spot-bottom-right-floating {
+    background-color: white;
+    border-radius: 10px;
+    border: solid rgb(187, 200, 228, 0.3) 0.1px;
+    box-shadow: 0px 0px 10px rgb(187, 200, 228, 0.7);
+    /* height: fit-content; */
+    height: 22vh;
+    width: 90%;
+    margin: 40px 0px 40px 10px;
+    padding: 20px 0px 0px 20px;
+}
+
+.floating-header {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5px;
+    margin-right: 30px;
+}
+
+.single-spot-price {
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+.single-spot-floating-review {
+    padding-top: 5px;
+}
+
+.long {
+    width: 99.9%
+}
+
+.bold {
+    font-weight: bolder;
+}
+
+.single-spot-floating-review span {
+    font-weight: bolder;
+    font-size: 14px;
+}

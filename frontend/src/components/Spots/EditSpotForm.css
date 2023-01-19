@@ -1,0 +1,99 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    margin: auto;
+  }
+
+  .validation-errors {
+    list-style: none;
+    font-size: 14px;
+    color: rgb(255, 90, 96);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input {
+    width: 95%;
+    font-size: 14px;
+    padding: 4px;
+    border: none;
+    border-radius: 4px;
+    margin: 4px 0px;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+.edit-form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.edit-form-input-wrapper {
+    border: rgb(200, 200, 200) 1px solid;
+    border-radius: 9px;
+    margin: 15px 25px 25px 25px;
+    padding-left: 10px;
+    padding-top: 5px;
+  }
+
+.edit-form-header-container {
+    margin-bottom: 10px;
+}
+
+.edit-form-container {
+    display: flex;
+    justify-self: center;
+}
+
+.edit-form-header-container .edit-form-input-break {
+    width: 105%
+}
+
+.edit-form-input-break{
+    background-color: rgb(200, 200, 200);
+    height:1px;
+    margin-left: -11px;
+    width: 103%;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+.edit-form-container textarea {
+    margin-left: 3px
+}
+
+.edit-form-container input {
+    margin-left: 3px
+}
+
+.edit-form-container label {
+    color: rgb(255, 90, 90);
+    margin-left: 6px;
+}
+
+.submit-button {
+    width: 99%;
+    padding: 10px;
+    margin: 0px 0px 5px -3px;
+    border: 1px rgb(255, 90, 96) solid;
+    border-radius: 5px;
+    background-color: rgb(255, 90, 90);
+    color: white;
+    font: bold;
+}
+
+.submit-button:hover {
+    background: white;
+    border: 1px rgb(255, 90, 90) solid;
+    color: rgb(255, 90, 90);
+    box-shadow: 1px 1px 1px rgb(255, 50, 50) ;
+}

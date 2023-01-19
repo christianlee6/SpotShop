@@ -6,7 +6,8 @@
     height: fit-content;
     position: sticky;
     top: 0px;
-    background-color: white
+    background-color: white;
+    z-index: 10;
 }
 
 .nav-bar {
@@ -30,4 +31,8 @@
     right: 10px;
     top: 25%;
     top: 25px;
+}
+
+.shop-now:hover {
+    box-shadow: 0px 2px 5px rgb(231, 231, 231);
 }

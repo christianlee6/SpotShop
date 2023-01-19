@@ -8,8 +8,10 @@ import * as spotsActions from "./store/spots"
 import Navigation from "./components/Navigation";
 
 import Spots from "./components/Spots"
-import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
+import LoadSingleSpot from "./components/Spots/SingleSpot";
 import CreateSpotForm from "./components/Spots/CreateSpotForm";
+import LoadUserSpots from "./components/Spots/LoadUserSpots";
+import EditSpotForm from "./components/Spots/EditSpotForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,7 +19,6 @@ function App() {
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-    dispatch(spotsActions.getAllSpots());
   }, [dispatch]);
 
   return (
@@ -29,12 +30,20 @@ function App() {
                 <Spots />
             </Route>
 
-            <Route path='/spots/:id'>
-                <SingleSpot isLoaded={isLoaded}/>
+            <Route path='/spots/:spotId'>
+                <LoadSingleSpot isLoaded={isLoaded}/>
             </Route>
 
-            <Route path="/new">
+            <Route path="/myspots/edit/:spotId">
+                <EditSpotForm />
+            </Route>
+
+            <Route exact path="/new">
                 <CreateSpotForm />
+            </Route>
+
+            <Route exact path='/myspots'>
+                <LoadUserSpots />
             </Route>
 
         </Switch>

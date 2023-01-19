@@ -55,10 +55,10 @@ function ProfileButton({ user }) {
       {user ? (
           <div className="account-buttons">
             <ul>{user.username}</ul>
-            <ul>{user.firstName} {user.lastName}</ul>
             <ul style={{"borderBottom":"1px solid lightGray"}}>{user.email}</ul>
-              <NavLink className="profile-actions" onClick={closeMenu} to={'/account'} style={{color: 'black'}}>Account</NavLink>
-              <button className="profile-actions" onClick={logout}>Log out</button>
+              <NavLink className={"profile-actions"} to={"/myspots"}>My Spots</NavLink>
+              <NavLink className={"profile-actions"} to={"/myreviews"}>My Reviews</NavLink>
+              <NavLink className="profile-actions" onClick={logout} to={"/"}>Log out</NavLink>
           </div>
         ) : (
             <div className="account-buttons">

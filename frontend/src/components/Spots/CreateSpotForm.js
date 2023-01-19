@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createSpotThunk } from "../../store/spots";
+import { addSpotImageThunk, createSpotThunk, resetSpots } from "../../store/spots";
 import "./CreateSpotForm.css";
 
 const CreateSpotForm = () => {
@@ -16,6 +16,9 @@ const CreateSpotForm = () => {
     const [price, setPrice] = useState("");
     const [url, setUrl] = useState("");
     const [errors, setErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false)
+
+    const sessionUser = useSelector((state) => state.session.user)
 
     const updateAddress = (e) => setAddress(e.target.value);
     const updateCity = (e) => setCity(e.target.value);
@@ -26,45 +29,60 @@ const CreateSpotForm = () => {
     const updatePrice = (e) => setPrice(e.target.value);
     const updateUrl = (e) => setUrl(e.target.value);
 
-    const blankData = (newSpot) => {
-        setAddress("");
-        setCity("");
-        setState("");
-        setCountry("");
-        setName("");
-        setDescription("");
-        setPrice("");
-        setUrl("")
-        setErrors([]);
 
-        history.push(`/spots/${newSpot.id}`);
-    };
+    useEffect(() => {
+        if (sessionUser) setErrors([])
+        else setErrors(["You must be logged in to host your home."])
+    }, [sessionUser])
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+            setErrors([])
+            setHasSubmitted(true)
 
-        const payload = {
-            address,
-            city,
-            state,
-            country,
-            name,
-            description,
-            price,
+            let errorsArr = []
+
+            if (!address.length) errorsArr.push("Please enter a address")
+            if (!city.length) errorsArr.push("Please enter a city")
+            if (!state.length) errorsArr.push("Please enter a state")
+            if (!country.length) errorsArr.push("Please enter a country")
+            if (!name.length || name.length > 50) errorsArr.push("Please enter a name less than 50 characters long")
+            if (!description.length || description.length > 255) errorsArr.push("Please enter a description less than 255 characters long")
+            if (!price || price <= 0) errorsArr.push("Please enter a price greater than 0")
+            if (!url.length || !url.includes(".jpg" || ".jpeg" || ".png" || ".gif")) errorsArr.push("Please enter a valid URL less than 255 characters long")
+
+            setErrors(errorsArr)
+
+            const spotInfo = {
+                address, city, state, country, lat: 50, lng: 50, name, description, price, url
+            }
+
+            const imageInfo = ({ url, preview: true})
+
+            const newSpot = await dispatch(createSpotThunk(spotInfo, imageInfo))
+
+            if (newSpot) {
+                await dispatch(addSpotImageThunk(newSpot.id, imageInfo))
+                resetSpots()
+                history.push("/myspots")
+            }
+
+            const blankData = (newSpot) => {
+                setAddress("");
+                setCity("");
+                setState("");
+                setCountry("");
+                setName("");
+                setDescription("");
+                setPrice("");
+                setUrl("")
+                setErrors([]);
+                setHasSubmitted(false)
+
+            };
+
         };
 
-        const spotImage = {
-            url,
-            preview: true,
-        };
-
-        await dispatch(createSpotThunk(payload, spotImage))
-            .then((newSpot) => blankData(newSpot))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            });
-    };
 
     return (
         <div

@@ -45,7 +45,7 @@ function Navigation({ isLoaded }){
             {isLoaded && (
                 <div style={{"display": "flex", "alignItems": "center", "gap": "20px"}}>
 
-                <NavLink to='/new' style={{textDecoration: "none", color: 'black', fontSize: "12.5px"}}>Shop Your Home Now</NavLink>
+                <NavLink className={"shop-now"} to='/new' style={{textDecoration: "none", color: 'black', fontSize: "12.5px"}}>Shop Your Home Now</NavLink>
                 <ProfileButton user={sessionUser} />
                 </div>
             )}

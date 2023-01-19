@@ -1,17 +1,69 @@
-
-.main-wrapper {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
+* {
     font-family: "Montserrat";
-    flex-grow: 1;
-    width: 100%;
-    margin-top: 15px;
 }
 
-.card-wrapper {
+.wrapper-center {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12vw;
+  }
+
+  .allspots-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 30px 20px;
     flex-wrap: wrap;
-    justify-content: space-around;
     width: 100%;
-}
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+
+  .allspots-spot-image-container {
+    width: 100%;
+    padding-bottom: 100%;
+    margin: 1em auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+  }
+
+  .allspots-spot-image-container img {
+    position: absolute;
+    object-fit: cover;
+    width: 200px;
+    max-width: 100%;
+    min-height: 100%;
+    border-radius: 15px;
+  }
+
+  .allspots-spot-info {
+    font-size: 14px;
+  }
+
+  .allspots-spot-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 2px 2px 0px;
+    /* margin-top: 5px; */
+    min-width: 0;
+  }
+
+  .allspots-spot-location {
+    font-weight: bolder;
+  }
+
+  .allspots-spot-country {
+    font-size: 13px;
+    color: rgb(171, 178, 193);
+  }
+
+  .allspots-spot-price {
+    font-weight: bolder;
+  }
+
+  .allspots-spot-price span {
+    font-weight: lighter;
+  }
