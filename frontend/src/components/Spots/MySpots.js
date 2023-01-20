@@ -16,9 +16,9 @@ const MySpots = ({ spot }) => {
     let isOwner = false;
     if (sessionUser?.id === spot.ownerId) isOwner = true;
 
-    // useEffect(() => {
-    //     dispatch(getSpotsOfUserThunk(spot.id))
-    // },[dispatch])
+    useEffect(() => {
+        dispatch(getSpotsOfUserThunk(spot.id))
+    },[dispatch, spot])
 
     const deleteHandleClick = async () => {
         if (

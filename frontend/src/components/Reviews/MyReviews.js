@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { deleteReviewThunk, getUserReviewsThunk } from "../../store/reviews";
 import { Link } from "react-router-dom";
-import './Reviews.css'
+import "./Reviews.css";
 
 const MyReviews = ({ review }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getUserReviewsThunk(review.spotId))
-    }, [dispatch])
+        dispatch(getUserReviewsThunk(review.spotId));
+    }, [dispatch]);
 
     const deleteReviewHandleClick = async () => {
         if (
@@ -24,7 +24,7 @@ const MyReviews = ({ review }) => {
     return (
         <div className="myreview-wrapper">
             <div className="myreview-header">
-                Review For {" "}
+                Review For{" "}
                 <Link
                     to={`/spots/${review.Spot.id}`}
                     style={{ textDecoration: "none", color: "red" }}
@@ -59,22 +59,30 @@ const MyReviews = ({ review }) => {
                 </div>
 
                 <div>
-                    {
-                        review.ReviewImages.length > 0 && <div>
+                    {review.ReviewImages.length > 0 && (
+                        <div>
                             <p>
                                 Images:
                             </p>
                             <div>
                                 {review.ReviewImages.map((image) => {
+                                    if (image.url === "") return null;
+
                                     return (
                                         <div className="myreview-image-wrapper">
-                                            <img src={image.url} className="myreview-image"/>
+                                            {/* <p className="myreview-image">
+                                                Images:
+                                            </p> */}
+                                            <img
+                                                src={image.url}
+                                                className="myreview-image"
+                                            />
                                         </div>
-                                    )
+                                    );
                                 })}
                             </div>
                         </div>
-                    }
+                    )}
                 </div>
             </div>
         </div>

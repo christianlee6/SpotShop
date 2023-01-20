@@ -6,7 +6,6 @@ const DemoUser = () => {
     const dispatch = useDispatch()
 
     const loginDemoUser = () => {
-        window.alert("You can now explore all of the site's features as a Demo User!")
         return dispatch(login({
             credential: "Demo-lition",
             password: "password"

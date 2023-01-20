@@ -43,6 +43,7 @@ const LoadSpotReviews = ({ spotId }) => {
                 {
                     review.ReviewImages &&
                     review.ReviewImages.map((image) => {
+                        if (image.url === "") return
                     return (
                       <img
                       className="single-review-image"

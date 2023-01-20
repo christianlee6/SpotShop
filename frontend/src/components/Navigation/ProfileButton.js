@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, Link } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 
 import OpenModalMenuItem from './OpenModalMenuItem'
@@ -46,9 +46,7 @@ function ProfileButton({ user }) {
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   const handleDemoLogin = (e) => {
-    e.preventDefault()
-    alert("You are now logged in as a Demo User.")
-    closeMenu()
+    alert("You can now explore all of this site's features as a Demo User!")
   }
 
   return (
