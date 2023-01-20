@@ -1,4 +1,3 @@
-import LoadUserSpots from "../components/Spots/LoadUserSpots";
 import { csrfFetch } from "./csrf";
 
 const LOAD_ALL_SPOTS = "spots/LOAD_ALL_SPOTS";

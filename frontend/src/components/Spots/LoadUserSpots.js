@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom"
 import { getSpotsOfUserThunk, resetSpots } from "../../store/spots"
 import MySpots from "./MySpots"
+import './Spots.css'
 
 const LoadUserSpots = () => {
     const dispatch = useDispatch()

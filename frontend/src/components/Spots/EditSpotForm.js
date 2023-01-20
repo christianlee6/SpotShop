@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { editSpotThunk, addSpotImageThunk, getOneSpotThunk } from "../../store/spots";
 import { useParams } from "react-router-dom";
-import './EditSpotForm.css'
+import './Spots.css'
 
 const EditSpotForm = () => {
     const dispatch = useDispatch();

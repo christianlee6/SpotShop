@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import SpotDetailCard from "./SpotDetailCard";
 import { getAllSpotsThunk, resetSpots } from "../../store/spots";
-import "./index.css";
+import "./Spots.css";
 
 const Spots = () => {
     const dispatch = useDispatch();

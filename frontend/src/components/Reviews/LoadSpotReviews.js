@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpotReviewsThunk } from "../../store/reviews";
-import "./LoadSpotReviews.css";
+import './Reviews.css'
 
 const LoadSpotReviews = ({ spotId }) => {
     const dispatch = useDispatch();
@@ -21,7 +21,6 @@ const LoadSpotReviews = ({ spotId }) => {
         {
           reviewsArr.map((review) => (
               <div className="single-review">
-                  {console.log("ReviewImages!!!", review.ReviewImages)}
               <h3>{review.User.firstName}{" "}{review.User.lastName}</h3>
               <p className="single-review-date">
                 {new Date(review.createdAt).toString().slice(3,-42)}
@@ -41,7 +40,6 @@ const LoadSpotReviews = ({ spotId }) => {
                 <i className="fa fa-quote-right fa-lg" aria-hidden="true"></i>
               </p>
               <div>
-                {/* {!review.ReviewImages.length ? (<p style={{fontSize: "11px"}}>User did not include any images</p> ) : (<img className="single-review-image" src={review.ReviewImages[0].url}/>) } */}
                 {
                     review.ReviewImages &&
                     review.ReviewImages.map((image) => {

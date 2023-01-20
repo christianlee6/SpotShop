@@ -10,32 +10,32 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
       {
         spotId: 1,
-        userId: 1,
+        userId: 2,
         review: "Owner was not friendly and didn't communicate well. Home was dirty.",
         stars: 1
       },
       {
         spotId: 2,
-        userId: 2,
+        userId: 1,
         review: "Relaxing and comfortable stay. Very welcoming and hospitable.",
         stars: 4
       },
       {
-        spotId: 3,
+        spotId: 4,
         userId: 3,
-        review: "Beautiful view as advertised.",
+        review: "Beautiful view.",
         stars: 5
       },
       {
-        spotId: 1,
-        userId: 2,
+        spotId: 3,
+        userId: 4,
         review: "As advertised.",
         stars: 3
       },
       {
-        spotId: 2,
-        userId: 3,
-        review: "Would stay here again",
+        spotId: 3,
+        userId: 1,
+        review: "Would stay here again. Very enjoyable stay.",
         stars: 4
       }
     ], {});

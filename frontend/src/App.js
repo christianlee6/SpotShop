@@ -12,6 +12,8 @@ import LoadSingleSpot from "./components/Spots/SingleSpot";
 import CreateSpotForm from "./components/Spots/CreateSpotForm";
 import LoadUserSpots from "./components/Spots/LoadUserSpots";
 import EditSpotForm from "./components/Spots/EditSpotForm";
+import LoadUserReviews from "./components/Reviews/LoadUserReviews";
+import CreateReview from "./components/Reviews/CreateReview";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +32,10 @@ function App() {
                 <Spots />
             </Route>
 
+            <Route exact path="/spots/:spotId/create-review">
+                <CreateReview />
+            </Route>
+
             <Route path='/spots/:spotId'>
                 <LoadSingleSpot isLoaded={isLoaded}/>
             </Route>
@@ -44,6 +50,10 @@ function App() {
 
             <Route exact path='/myspots'>
                 <LoadUserSpots />
+            </Route>
+
+            <Route exact path="/myreviews">
+                <LoadUserReviews />
             </Route>
 
         </Switch>

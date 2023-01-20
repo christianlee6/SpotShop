@@ -1,14 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./SpotDetailCard.css";
 import noimage from './images/noimage.png'
+import "./Spots.css";
 
 const SpotDetailCard = ({spot}) => {
-    const rating = spot.avgRating;
 
     if (!spot) return null;
-
-    // const distances = [113, 224, 512, 581, 223, 594, 918, 192, 108, 295]
 
     return (
         <div>
@@ -30,7 +27,7 @@ const SpotDetailCard = ({spot}) => {
 
               <div className="allspots-spot-rating">
                 {spot.avgRating === "No average rating available" ?
-                  (<span>★ None</span>):
+                  (<span>★ New</span>):
                   (<span>★ {spot.avgRating}</span>)
                 }
               </div>
