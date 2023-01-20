@@ -1,0 +1,65 @@
+.hidden {
+    display: none
+}
+
+.profile-menu-button {
+    font-size: 15px;
+    padding-right: 5px;
+}
+
+.profile-button {
+    border: 1px solid #dddddd;
+    box-sizing: border-box;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 62.5px;
+    height: 35px;
+    padding: 5px 10px 5px 10px;
+    color: grey;
+    background-color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.profile-button:hover {
+    box-shadow: 0px 2px 5px #dddddd;
+}
+
+.account-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-buttons ul, li {
+    padding: 10px;
+    font-size: 13px;
+    font-family: "Montserrat";
+}
+
+.profile-actions {
+    display: flex;
+    text-decoration: none;
+    padding-left: 15px;
+    height: 40px;
+    align-items: center;
+    border: none;
+    background-color: white;
+    font-size: 13px;
+    color: black;
+    font-family: "Montserrat";
+}
+
+.profile-actions:hover {
+    box-shadow: 0px 2px 5px rgb(231, 231, 231);
+}
+
+.account-buttons li:hover {
+    background-color: rgb(231, 231, 231);
+    cursor: pointer;
+}
+
+.profile-actions:hover {
+    background-color: rgb(231, 231, 231);
+}

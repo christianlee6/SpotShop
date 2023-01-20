@@ -218,7 +218,8 @@ router.get("/current", requireAuth, async (req, res) => {
         delete review.Spot.SpotImages
 
         if (review.ReviewImages.length === 0) {
-            review.ReviewImages = "This review does not contain any images";
+            // review.ReviewImages = "This review does not contain any images";
+            review.ReviewImages = []
         }
 
     })
