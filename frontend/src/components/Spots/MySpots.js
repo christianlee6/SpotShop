@@ -2,10 +2,11 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
     updateSpotThunk,
-    deleteSpotThunk,
+    deleteSpotThunk, getSpotsOfUserThunk,
 } from "../../store/spots";
 
 import noimage from "./images/noimage.png";
+import { useEffect } from "react";
 
 const MySpots = ({ spot }) => {
     const dispatch = useDispatch();
@@ -14,6 +15,10 @@ const MySpots = ({ spot }) => {
     const sessionUser = useSelector((state) => state.session.user);
     let isOwner = false;
     if (sessionUser?.id === spot.ownerId) isOwner = true;
+
+    // useEffect(() => {
+    //     dispatch(getSpotsOfUserThunk(spot.id))
+    // },[dispatch])
 
     const deleteHandleClick = async () => {
         if (

@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { deleteReviewThunk } from "../../store/reviews";
+import { deleteReviewThunk, getUserReviewsThunk } from "../../store/reviews";
 import { Link } from "react-router-dom";
 import './Reviews.css'
 
 const MyReviews = ({ review }) => {
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getUserReviewsThunk(review.spotId))
+    }, [dispatch])
 
     const deleteReviewHandleClick = async () => {
         if (
@@ -13,7 +17,7 @@ const MyReviews = ({ review }) => {
                 "Are you sure you want to delete this spot? This action is irreversible."
             )
         ) {
-            await dispatch(deleteReviewThunk(review.id));
+            dispatch(deleteReviewThunk(review.id));
         }
     };
 
@@ -23,7 +27,7 @@ const MyReviews = ({ review }) => {
                 Review For {" "}
                 <Link
                     to={`/spots/${review.Spot.id}`}
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: "none", color: "red" }}
                 >
                     {review.Spot.name}
                 </Link>
@@ -58,7 +62,7 @@ const MyReviews = ({ review }) => {
                     {
                         review.ReviewImages.length > 0 && <div>
                             <p>
-                                Images Included in This Review:
+                                Images:
                             </p>
                             <div>
                                 {review.ReviewImages.map((image) => {

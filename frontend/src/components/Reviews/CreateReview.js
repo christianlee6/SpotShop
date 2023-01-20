@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { createNewReviewThunk, addReviewImageThunk } from "../../store/reviews";
 
 
-const CreateReview = ({spotId}) => {
+const CreateReview = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const { spotId } = useParams()
     const sessionUser = useSelector((state) => state.session.user);
 
     const [review, setReview] = useState("");
@@ -42,7 +43,7 @@ const CreateReview = ({spotId}) => {
 
         if (errorsArr.length) return;
 
-        const reviewInfo = { review, stars, url };
+        const reviewInfo = { review, stars, url};
 
         const newReview = await dispatch(
             createNewReviewThunk(reviewInfo, spotId, sessionUser)
@@ -52,7 +53,6 @@ const CreateReview = ({spotId}) => {
 
         await dispatch(addReviewImageThunk(newReview.id, imageObj));
 
-        clearData();
 
         const clearData = () => {
             setReview("")
@@ -62,6 +62,8 @@ const CreateReview = ({spotId}) => {
             setHasSubmitted(false)
         };
 
+        clearData();
+        history.push(`/spots/${spotId}`)
     };
 
     const handleCancel = (e) => {

@@ -75,6 +75,11 @@ export const getUserReviewsThunk = () => async (dispatch) => {
 
 export const createNewReviewThunk =
     (newReview, spotId, user) => async (dispatch) => {
+        console.log("SPOTID:", spotId)
+
+        let { review, stars } = newReview
+        let newReviewNoUrl = {review: review, stars: stars}
+        console.log("NEWREVIEW NO URL:", newReview)
         const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },

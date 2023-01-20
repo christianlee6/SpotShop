@@ -32,12 +32,12 @@ function App() {
                 <Spots />
             </Route>
 
-            <Route exact path="/spots/:spotId/create-review">
-                <CreateReview />
+            <Route exact path='/spots/:spotId'>
+                <LoadSingleSpot isLoaded={isLoaded}/>
             </Route>
 
-            <Route path='/spots/:spotId'>
-                <LoadSingleSpot isLoaded={isLoaded}/>
+            <Route exact path="/spots/:spotId/create-review">
+                <CreateReview />
             </Route>
 
             <Route path="/myspots/edit/:spotId">

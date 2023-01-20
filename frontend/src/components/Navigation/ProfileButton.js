@@ -6,6 +6,7 @@ import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem'
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import DemoUser from "../DemoUser.js";
 import './ProfileButton.css'
 
 function ProfileButton({ user }) {
@@ -44,6 +45,12 @@ function ProfileButton({ user }) {
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
+  const handleDemoLogin = (e) => {
+    e.preventDefault()
+    alert("You are now logged in as a Demo User.")
+    closeMenu()
+  }
+
   return (
     <>
       <button onClick={openMenu} className="profile-button">
@@ -72,6 +79,9 @@ function ProfileButton({ user }) {
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
                 />
+                <OpenModalMenuItem
+                itemText={<DemoUser />}
+                onItemClick={handleDemoLogin}/>
             </div>
         )}
       </ul>

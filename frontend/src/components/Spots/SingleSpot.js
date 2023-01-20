@@ -147,7 +147,7 @@ const LoadSingleSpot = () => {
 
             <div>
                 {
-                    sessionUser && !isOwner && <button onClick={handleClick}>CREATE A REVIEW</button>
+                    sessionUser && !isOwner && <button onClick={handleClick}>Write a Review for this Spot</button>
                 }
             </div>
             <div className="single-spot-linebreak long"></div>
