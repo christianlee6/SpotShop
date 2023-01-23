@@ -35,8 +35,8 @@ SpotShop is a website inspired by [AirBnb](https://airbnb.com/). It allows users
 ![image](https://user-images.githubusercontent.com/107057911/213980147-270c7f9f-ef41-40b8-8058-8d2d32291986.PNG)
 
 ## Individual Spot Detail Page
-[!image](https://user-images.githubusercontent.com/107057911/213980596-686512c2-82f3-425c-b448-d0197bb5f565.PNG)
-[!image](https://user-images.githubusercontent.com/107057911/213980768-8df9dc83-25f6-434b-b659-0eae5ddb6501.PNG)
+![image](https://user-images.githubusercontent.com/107057911/213980596-686512c2-82f3-425c-b448-d0197bb5f565.PNG)
+![image](https://user-images.githubusercontent.com/107057911/213980768-8df9dc83-25f6-434b-b659-0eae5ddb6501.PNG)
 
 ## Write a Review
 Logged in users who are NOT the owner of the spot will see a "Write a Review for this Spot" button in the Review section of the spot detail page.
