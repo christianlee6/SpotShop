@@ -64,4 +64,4 @@ Logged in users who are NOT the owner of the spot will see a "Write a Review for
 [linkedin-color]: https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white
 [christian-linkedin]: https://www.linkedin.com/in/christian-lee-383590192/
 [GitHub-color]: https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white
-[christian-GitHub]: [https://github.com/christianlee6]
+[christian-GitHub]: https://github.com/christianlee6
