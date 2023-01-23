@@ -52,6 +52,9 @@ Logged in users who are NOT the owner of the spot will see a "Write a Review for
 ![image](https://user-images.githubusercontent.com/107057911/213981607-dd423b1a-c628-4df0-a71d-0d9e5904ac00.PNG)
 
 ## Get Started!
+- cd into SpotShop/backend and run npm start to start the backend server locally.
+- cd into SpotShop/frontend and run npm start to open up the front end in your browser locally.
+- npm install any dependencies
 
 ## My Contact Info:
 
