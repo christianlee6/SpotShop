@@ -25,3 +25,43 @@ SpotShop is a website inspired by [AirBnb](https://airbnb.com/). It allows users
 - [Features](https://github.com/christianlee6/SpotShop/wiki/Features-List)
 
 ## Landing Page
+![image]
+
+## Dropdown Menu / Demo User
+![image]
+
+## Login / Signup Form Modal
+![image]
+![image]
+
+## Individual Spot Detail Page 
+[!image]
+[!image]
+
+## Write a Review
+Logged in users who are NOT the owner of the spot will see a "Write a Review for this Spot" button in the Review section of the spot detail page.
+![image]
+
+## Host a Spot
+![image]
+
+## My Spots (Edit / Delete)
+![image]
+
+## My Reviews (Delete)
+
+## Get Started! 
+
+## My Contact Info: 
+
+### Christian Lee
+[![Linkedin][linkedin-color]][christian-linkedin]
+[![GitHub][Github-color]][christian-GitHub]
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-color]: https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white
+[christian-linkedin]: https://www.linkedin.com/in/christian-lee-383590192/
+[GitHub-color]: https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white
+[christian-GitHub]: [https://github.com/christianlee6]
