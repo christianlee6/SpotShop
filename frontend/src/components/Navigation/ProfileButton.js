@@ -34,7 +34,10 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const closeMenu = () => setShowMenu(false);
+  const closeMenu = () => {
+    setShowMenu(false)
+    
+};
 
   const logout = (e) => {
     e.preventDefault();
@@ -63,7 +66,7 @@ function ProfileButton({ user }) {
             <ul style={{"borderBottom":"1px solid lightGray"}}>{user.email}</ul>
               <NavLink className={"profile-actions"} to={"/myspots"}>My Spots</NavLink>
               <NavLink className={"profile-actions"} to={"/myreviews"}>My Reviews</NavLink>
-              <NavLink className="profile-actions" onClick={logout} to={"/"}>Log out</NavLink>
+              <NavLink className="profile-actions" onClick={logout} to={"/"}>Log Out</NavLink>
           </div>
         ) : (
             <div className="account-buttons">

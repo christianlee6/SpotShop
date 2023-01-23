@@ -14,10 +14,8 @@ const LoadUserSpots = () => {
     useEffect(() => {
         dispatch(getSpotsOfUserThunk())
 
-        return () => {
-            dispatch(resetSpots())
-        }
-    }, [dispatch])
+
+    }, [])
 
     if (!sessionUser) return <Redirect to="/"/>
 
@@ -25,7 +23,7 @@ const LoadUserSpots = () => {
         <>
             <div className="myspots-header">
                 {
-                    spotsArr.length === 0 ? (<><h1>My Spots</h1><h4>Oops! It looks like you don't have any spots</h4></>) : (<h1>My Spots</h1>)
+                    spotsArr.length === 0 ? (<><h1>My Spots</h1><h4>Oops! It looks like you don't have any spots.</h4></>) : (<h1>My Spots</h1>)
                 }
             </div>
 

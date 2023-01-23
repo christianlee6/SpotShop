@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import SpotDetailCard from "./SpotDetailCard";
-import { getAllSpotsThunk, resetSpots } from "../../store/spots";
+import { getAllSpotsThunk, getSpotsOfUserThunk, resetSpots } from "../../store/spots";
 import "./Spots.css";
 
 const Spots = () => {
@@ -14,9 +14,6 @@ const Spots = () => {
     useEffect(() => {
         dispatch(getAllSpotsThunk());
 
-        return () => {
-            dispatch(resetSpots);
-        };
     }, [dispatch]);
 
     if (!spotsArr.length) return null;

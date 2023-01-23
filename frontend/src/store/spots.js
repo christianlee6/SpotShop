@@ -150,22 +150,21 @@ const spotsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_ALL_SPOTS:
-            newState = {...state}
+            newState = { allSpots: {}, singleSpot: {}}
             const normalizedSpots = {}
             action.spots.Spots.forEach((spot) => normalizedSpots[spot.id] = spot)
             newState.allSpots = normalizedSpots
-            newState.singleSpot = {}
             return newState
 
         case LOAD_USER_SPOTS:
-            newState = {...state}
+            newState = {allSpots: {}, singleSpot: {}}
             const normalizedUserSpots = {}
             action.spots.Spots.forEach((spot) => normalizedUserSpots[spot.id] = spot)
             newState.allSpots = normalizedUserSpots
             return newState
 
         case LOAD_SINGLE_SPOT:
-            newState = {...state}
+            newState = { allSpots: {}, singleSpot: {}}
             newState.singleSpot = action.spot
             return newState
 
