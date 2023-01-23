@@ -51,6 +51,7 @@ Logged in users who are NOT the owner of the spot will see a "Write a Review for
 ## My Reviews (Delete)
 
 ## Get Started! 
+cd into SpotShop/backend and run npm start to start the backend server locally. cd into SpotShop/frontend and run npm start to open up the front end in your browser locally.
 
 ## My Contact Info: 
 
