@@ -22,7 +22,7 @@
 }
 
 .allspots-spot-image-container {
-    width: 100%;
+    width: 99%;
     padding-bottom: 100%;
     margin: 1em auto;
     overflow: hidden;
@@ -41,6 +41,7 @@
 
 .allspots-spot-info {
     font-size: 14px;
+    width: 14.5em;
 }
 
 .allspots-spot-header {
@@ -66,6 +67,11 @@
 
 .allspots-spot-price span {
     font-weight: lighter;
+}
+
+.allspots-spot-rating {
+
+    text-align: end;
 }
 
 /* .create-spot-form {

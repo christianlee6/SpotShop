@@ -79,6 +79,7 @@ export const getSpotsOfUserThunk = () => async (dispatch) => {
     if (response.ok) {
         const spots = await response.json();
         dispatch(loadUserSpots(spots));
+        return spots
     }
 };
 
@@ -181,10 +182,10 @@ const spotsReducer = (state = initialState, action) => {
             return newState
 
         case DELETE_SPOT:
-            newState = {...state}
-            newState.allSpots = {...state.singleSpot}
+            newState = Object.assign({}, state)
+            // newState.allSpots = {...state.singleSpot}
             delete newState.allSpots[action.spotId]
-            if (newState.singleSpot.id === action.spotId) newState.singleSpot = {}
+            // if (newState.singleSpot.id === action.spotId) newState.singleSpot = {}
             return newState
 
         case ADD_SPOT_IMAGE:

@@ -45,6 +45,7 @@ const CreateSpotForm = () => {
 
         let errorsArr = [];
 
+        if (!sessionUser) errorsArr.push("You must be logged in to host a spot.")
         if (!address.length) errorsArr.push("Please enter a address");
         if (!city.length) errorsArr.push("Please enter a city");
         if (!state.length) errorsArr.push("Please enter a state");
@@ -105,7 +106,7 @@ const CreateSpotForm = () => {
     return (
         <div className="create-spot-whole-container">
             <h2 className="create-spot-header-container">
-                List Your Spot Now!
+                Host Your Spot Now!
             </h2>
             <div className="validation-errors">
                 {hasSubmitted &&

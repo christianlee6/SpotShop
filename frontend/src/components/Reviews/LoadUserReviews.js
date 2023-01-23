@@ -6,13 +6,11 @@ import MyReviews from "./MyReviews"
 import './Reviews.css'
 
 
-const LoadUserReviews = ({ userId }) => {
+const LoadUserReviews = ({  }) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector((state) => state.session.user)
     const userReviewsObj = useSelector((state) => state.reviews.user)
     const userReviewsArr = Object.values(userReviewsObj)
-
-    console.log("!!!", userReviewsArr)
 
     useEffect(() => {
         dispatch(getUserReviewsThunk())

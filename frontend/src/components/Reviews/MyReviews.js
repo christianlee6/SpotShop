@@ -14,7 +14,7 @@ const MyReviews = ({ review }) => {
     const deleteReviewHandleClick = async () => {
         if (
             window.confirm(
-                "Are you sure you want to delete this spot? This action is irreversible."
+                "Are you sure you want to delete this review? This action is irreversible."
             )
         ) {
             dispatch(deleteReviewThunk(review.id));

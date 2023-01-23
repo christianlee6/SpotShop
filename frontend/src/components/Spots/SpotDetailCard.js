@@ -8,7 +8,7 @@ const SpotDetailCard = ({spot}) => {
     if (!spot) return null;
 
     return (
-        <div>
+        <div className="allspots-wrapper">
         <Link style={{ textDecoration: "none", color: "black" }} to={`/spots/${spot.id}`}>
 
           <div className="allspots-spot-image-container">

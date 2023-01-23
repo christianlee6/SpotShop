@@ -16,6 +16,8 @@ const Spots = () => {
 
     }, [dispatch]);
 
+
+
     if (!spotsArr.length) return null;
     return (
         <>

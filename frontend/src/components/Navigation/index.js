@@ -38,14 +38,14 @@ function Navigation({ isLoaded }){
         <div className='nav-bar'>
             <div>
                 <NavLink exact to="/" className={"home-link"}>
-                    <img style={{"height": "100px", "width":"100px", "padding-left": "2px"}} src={logo}></img>
+                    <img style={{"height": "100px", "width":"100px"}} src={logo}></img>
                 </NavLink>
             </div>
             <div style={{"width": "50px"}}></div>
             {isLoaded && (
-                <div style={{"display": "flex", "alignItems": "center", "gap": "20px", "padding-right": "28px"}}>
+                <div style={{"display": "flex", "alignItems": "center", "gap": "20px"}}>
 
-                <NavLink className="shop-now" to='/new' style={{textDecoration: "none", color: 'black', fontSize: "15px"}}>Shop Your Home Now</NavLink>
+                <NavLink className="shop-now" to='/new' style={{textDecoration: "none", color: 'black', fontSize: "15px",}}>Shop Your Home Now</NavLink>
                 <ProfileButton user={sessionUser} />
                 </div>
             )}
