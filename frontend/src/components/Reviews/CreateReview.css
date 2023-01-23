@@ -1,33 +1,13 @@
-form {
-    display: flex;
-    flex-direction: column;
-    width: 450px;
-    margin: auto;
-  }
-
-.signup-header {
-    color: black;
+.review-subheader {
+      display: flex;
+  justify-content: center;
+  color: black;
   font-weight: bold;
-  font-size: 15px;
-  padding: 7.5px 0px;
-  width: fit-content;
-  margin: auto;
+  font-size: 20px;
+  margin: 20px 20px 10px 20px;
 }
 
-.line-break {
-    height: 0.01rem;
-    background-color: rgb(187, 200, 228, 0.3);
-    width: 100%;
-  }
-
-  .signup-subheader {
-    color: black;
-    font-weight: bold;
-    font-size: 20px;
-    margin: 20px 20px 10px 30px;
-  }
-
-  .validation-errors {
+.validation-errors {
     list-style: none;
     font-size: 14px;
     color: rgb(255, 90, 90);
@@ -44,6 +24,11 @@ form {
     padding-top: 5px;
   }
 
+  .review-field {
+    color: rgb(255, 90, 90);
+    padding-left: 3px;
+  }
+
   .form-input-break{
     background-color: rgb(200, 200, 200);
     height:1px;
@@ -52,7 +37,6 @@ form {
     margin-top: 4px;
     margin-bottom: 4px;
   }
-
 
   input {
     width: 95%;
@@ -63,13 +47,7 @@ form {
     margin: 4px 0px;
   }
 
-  .input-field {
-    color: rgb(255, 90, 90);
-    font-size: 12px;
-    padding-left: 3px;
-  }
-
-  .submit {
+  .review-submit-button {
     width: 89%;
     padding: 10px;
     margin: 0px 25px 5px 25px;
@@ -78,5 +56,5 @@ form {
     background: rgb(255, 90, 90);
     color: white;
     font: bold;
+    cursor: pointer;
   }
-

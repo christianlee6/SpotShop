@@ -68,7 +68,7 @@
     font-weight: lighter;
 }
 
-.create-spot-form {
+/* .create-spot-form {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -78,7 +78,8 @@
     width: 350px;
     padding: 10px;
     margin-top: 50px;
-}
+} */
+
 input {
     width: 90%;
     padding: 10px;
@@ -350,6 +351,105 @@ input:focus {
 
 .myspots-header {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    font-size: 20px;
+}
+
+.myspots-header>h1, .myspots-header>h4 {
+    display: flex;
+    justify-content: center;
+}
+
+.myspot-buttons-container {
+  display: flex;
+  justify-content:space-between;
+  padding: 0px 2px 2px 0px;
+  min-width: 0;
+}
+
+.myspots-buttons {
+  cursor: pointer;
+  width: 115px;
+  padding: 3px 1px;
+  margin: 3px 0px 1px 0px;
+  border: 1px rgb(255, 90, 90) solid;
+  border-radius: 4px;
+  background: rgb(255, 90, 90);
+  color: white;
+  font: bold;
+}
+
+.create-spot-whole-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.create-spot-header-container {
+    margin-bottom: 10px
+}
+
+.create-spot-form-container .form-input-break{
+    width: 100%
+}
+
+.create-spot-form-container input {
+    margin-left: 2px;
+}
+.create-spot-form-container textarea {
+    margin-left: 2px;
+}
+
+.create-spot-form-container label {
+    color: rgb(255, 90, 90);
+    margin-left: 6px
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    margin: 0px 0px 5px -3px;
+    border: 1px rgb(255, 90, 90) solid;
+    border-radius: 5px;
+    background: rgb(255, 90, 90);
+    color: white;
+    font: bold;
+}
+
+.submit-button:hover {
+    background: white;
+    border: 1px rgb(255, 90, 90) solid;
+    color: rgb(255, 90, 90);
+}
+
+.form-input-wrapper {
+    border: rgb(200, 200, 200) 1px solid;
+    border-radius: 9px;
+    margin: 15px 25px 25px 25px;
+    padding-left: 10px;
+    padding-top: 5px;
+  }
+
+  .form-input-break{
+    background-color: rgb(200, 200, 200);
+    height:1px;
+    margin-left: -11px;
+    width: 103%;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+.write-review-button {
+    padding: 8px;
+    margin: 0px 25px 5px 25px;
+    border: 1px rgb(255, 90, 90) solid;
+    border-radius: 4px;
+    background: rgb(255, 90, 90);
+    color: white;
+    font: bold;
+    cursor: pointer;
+    align-items: left;
 }

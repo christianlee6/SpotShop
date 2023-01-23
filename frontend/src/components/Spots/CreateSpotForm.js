@@ -81,124 +81,132 @@ const CreateSpotForm = () => {
 
         const newSpot = await dispatch(createSpotThunk(spotInfo, imageInfo));
 
+        const clearData = (newSpot) => {
+            setAddress("");
+            setCity("");
+            setState("");
+            setCountry("");
+            setName("");
+            setDescription("");
+            setPrice("");
+            setUrl("");
+            setErrors([]);
+            setHasSubmitted(false);
+        };
+
         if (newSpot) {
             await dispatch(addSpotImageThunk(newSpot.id, imageInfo));
-            resetSpots();
+            clearData();
             history.push("/myspots");
         }
 
-        // const blankData = (newSpot) => {
-        //     setAddress("");
-        //     setCity("");
-        //     setState("");
-        //     setCountry("");
-        //     setName("");
-        //     setDescription("");
-        //     setPrice("");
-        //     setUrl("")
-        //     setErrors([]);
-        //     setHasSubmitted(false)
-
-        // };
     };
 
     return (
-        <div
-            style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-            }}
-        >
-            <form className="create-spot-form" onSubmit={handleSubmit}>
-                <button
-                    onClick={() => history.push("/")}
-                    style={{
-                        padding: "0px",
-                        height: "0px",
-                        color: "black",
-                        width: "20px",
-                        position: "relative",
-                        right: "163px",
-                        border: "none",
-                        background: "none",
-                        cursor: "pointer",
-                    }}
-                >
-                    X
-                </button>
-                {errors.length !== 0 && (
-                    <ul style={{ marginBottom: "0px" }}>
-                        {errors.map((error, idx) => (
-                            <li key={idx}>{error}</li>
-                        ))}
-                    </ul>
-                )}
-                <h4 style={{ marginTop: "0px" }}>Create a Listing</h4>
-                <input
-                    style={{ borderRadius: "10px 10px 0px 0px" }}
-                    type={"text"}
-                    placeholder={"Address"}
-                    required
-                    value={address}
-                    onChange={updateAddress}
-                />
-                <input
-                    type={"text"}
-                    placeholder={"City"}
-                    required
-                    value={city}
-                    onChange={updateCity}
-                />
-                <input
-                    type={"text"}
-                    placeholder={"State"}
-                    required
-                    value={state}
-                    onChange={updateState}
-                />
-                <input
-                    type={"text"}
-                    placeholder={"Country"}
-                    required
-                    value={country}
-                    onChange={updateCountry}
-                />
-                <input
-                    type={"text"}
-                    placeholder={"Name"}
-                    required
-                    value={name}
-                    onChange={updateName}
-                />
-                <input
-                    type={"text"}
-                    placeholder={"Description"}
-                    required
-                    value={description}
-                    onChange={updateDescription}
-                />
-                <input
-                    type={"number"}
-                    placeholder={"Price per night"}
-                    required
-                    min={1}
-                    value={price}
-                    onChange={updatePrice}
-                />
-                <input
-                    style={{
-                        borderRadius: "0px 0px 10px 10px",
-                        marginBottom: "10px",
-                    }}
-                    type={"url"}
-                    placeholder={"Display image URL"}
-                    required
-                    value={url}
-                    onChange={updateUrl}
-                />
-                <button className="submit-button">Submit</button>
-            </form>
+        <div className="create-spot-whole-container">
+            <h2 className="create-spot-header-container">
+                List Your Spot Now!
+            </h2>
+            <div className="validation-errors">
+                {hasSubmitted &&
+                    errors?.map((error) => <div key={error}>{error}</div>)}
+            </div>
+            <div className="create-spot-form-container form-input-wrapper" >
+                <form onSubmit={handleSubmit}>
+                    <label>
+                    Address:
+                    <input
+                        style={{ borderRadius: "10px 10px 0px 0px" }}
+                        type={"text"}
+                        // placeholder={"Address"}
+                        required
+                        value={address}
+                        onChange={updateAddress}
+                    />
+                        </label>
+                    <div className="form-input-break"></div>
+                    <label>
+                    City:
+                    <input
+                        type={"text"}
+                        // placeholder={"City"}
+                        required
+                        value={city}
+                        onChange={updateCity}
+                        />
+                        </label>
+                    <div className="form-input-break"></div>
+                    <label>
+                    State:
+                    <input
+                        type={"text"}
+                        // placeholder={"State"}
+                        required
+                        value={state}
+                        onChange={updateState}
+                        />
+                    </label>
+                    <div className="form-input-break"></div>
+                    <label>
+                    Country:
+                    <input
+                        type={"text"}
+                        // placeholder={"Country"}
+                        required
+                        value={country}
+                        onChange={updateCountry}
+                        />
+                    </label>
+                    <div className="form-input-break"></div>
+                    <label>
+                    Name:
+                    <input
+                        type={"text"}
+                        // placeholder={"Name"}
+                        required
+                        value={name}
+                        onChange={updateName}
+                        />
+                        </label>
+                    <div className="form-input-break"></div>
+                    <label>
+                    Description:
+                    <input
+                        type={"text"}
+                        // placeholder={"Description"}
+                        required
+                        value={description}
+                        onChange={updateDescription}
+                        />
+                    </label>
+                    <div className="form-input-break"></div>
+                    <label>
+                    Price:
+                    <input
+                        type={"number"}
+                        // placeholder={"Price per night"}
+                        required
+                        min={1}
+                        value={price}
+                        onChange={updatePrice}
+                        />
+                    </label>
+                    <div className="form-input-break"></div>
+                    <label>
+                    Display Image URL:
+                    <input
+                        type={"url"}
+                        // placeholder={"Display image URL"}
+                        required
+                        value={url}
+                        onChange={updateUrl}
+                        />
+                        </label>
+                    <div className="form-input-break"></div>
+                    <button className="submit-button">Submit</button>
+                    <button onClick={() => history.push("/")}className="submit-button">Cancel</button>
+                </form>
+            </div>
         </div>
     );
 };

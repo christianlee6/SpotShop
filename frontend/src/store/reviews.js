@@ -55,7 +55,6 @@ export const getSpotReviewsThunk = (spotId) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log("@@@@", data);
         const reviewsArr = data.Reviews;
         dispatch(loadSpotReviews(reviewsArr));
         return data;
@@ -75,10 +74,9 @@ export const getUserReviewsThunk = () => async (dispatch) => {
 
 export const createNewReviewThunk =
     (newReview, spotId, user) => async (dispatch) => {
-        console.log("SPOTID:", spotId)
+        console.log("SPOTID:", newReview)
 
         let { review, stars } = newReview
-        let newReviewNoUrl = {review: review, stars: stars}
         console.log("NEWREVIEW NO URL:", newReview)
         const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
             method: "POST",

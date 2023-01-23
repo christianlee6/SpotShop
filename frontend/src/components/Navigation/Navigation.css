@@ -6,6 +6,7 @@
     height: fit-content;
     position: sticky;
     top: 0px;
+
     background-color: white;
     z-index: 10;
 }
@@ -14,8 +15,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 97%;
-    height: 45px
+    width: 80%;
+    height: 50px;
+
 }
 
 .profile-dropdown {

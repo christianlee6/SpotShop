@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -27,7 +27,7 @@ function Navigation({ isLoaded }){
         />
         <OpenModalButton
           buttonText="Sign Up"
-          modalComponent={<SignupFormModal />}
+          modalComponent={<SignupFormModal user={sessionUser}/>}
         />
       </li>
     );
@@ -38,19 +38,20 @@ function Navigation({ isLoaded }){
         <div className='nav-bar'>
             <div>
                 <NavLink exact to="/" className={"home-link"}>
-                    <img style={{"height": "65px", "width":"65px"}} src={logo}></img>
+                    <img style={{"height": "100px", "width":"100px", "padding-left": "2px"}} src={logo}></img>
                 </NavLink>
             </div>
             <div style={{"width": "50px"}}></div>
             {isLoaded && (
-                <div style={{"display": "flex", "alignItems": "center", "gap": "20px"}}>
+                <div style={{"display": "flex", "alignItems": "center", "gap": "20px", "padding-right": "28px"}}>
 
-                <NavLink className={"shop-now"} to='/new' style={{textDecoration: "none", color: 'black', fontSize: "12.5px"}}>Shop Your Home Now</NavLink>
+                <NavLink className="shop-now" to='/new' style={{textDecoration: "none", color: 'black', fontSize: "15px"}}>Shop Your Home Now</NavLink>
                 <ProfileButton user={sessionUser} />
                 </div>
             )}
         </div>
     </div>
+
   );
 }
 
