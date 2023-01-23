@@ -40,6 +40,7 @@ SpotShop is a website inspired by [AirBnb](https://airbnb.com/). It allows users
 
 ## Write a Review
 Logged in users who are NOT the owner of the spot will see a "Write a Review for this Spot" button in the Review section of the spot detail page.
+
 ![image](https://user-images.githubusercontent.com/107057911/213980949-be9ea943-5bbe-4c18-9d96-d6f35093b207.PNG)
 
 ## Host a Spot
