@@ -17,3 +17,11 @@ SpotShop is a website inspired by [AirBnb](https://airbnb.com/). It allows users
 ### Hosting
 
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+
+## Wiki Links
+- [API Documentation](https://github.com/christianlee6/SpotShop/wiki/API-Documentation)
+- [Database Schema](https://github.com/christianlee6/SpotShop/wiki/Database-Schema)
+- [Redux State Shape](https://github.com/christianlee6/SpotShop/wiki/Redux-State-Shape)
+- [Features](https://github.com/christianlee6/SpotShop/wiki/Features-List)
+
+## Landing Page
