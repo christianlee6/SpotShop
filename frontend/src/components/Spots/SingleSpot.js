@@ -20,6 +20,7 @@ const LoadSingleSpot = () => {
     const reviews = useSelector((state) => {
         return state.reviews.spot;
     });
+    console.log("REVIEWS", reviews)
 
     useEffect(() => {
         dispatch(getOneSpotThunk(+spotId));
