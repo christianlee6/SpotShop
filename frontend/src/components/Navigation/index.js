@@ -41,11 +41,11 @@ function Navigation({ isLoaded }){
                     <img style={{"height": "100px", "width":"100px"}} src={logo}></img>
                 </NavLink>
             </div>
-            <div style={{"width": "50px"}}></div>
+            <div ></div>
             {isLoaded && (
-                <div style={{"display": "flex", "alignItems": "center", "gap": "20px"}}>
+                <div className='shop-now-profile-button' >
 
-                <NavLink className="shop-now" to='/new' style={{textDecoration: "none", color: 'black', fontSize: "15px",}}>Shop Your Home Now</NavLink>
+                <NavLink className="shop-now" to='/new' >Shop Your Home Now</NavLink>
                 <ProfileButton user={sessionUser} />
                 </div>
             )}

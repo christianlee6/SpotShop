@@ -102,7 +102,7 @@ const LoadUserSpots = ({ spot }) => {
                                             Edit Spot
                                         </button>
 
-                                        <button className="myspots-buttons" onClick={(e) => dispatch(deleteSpotThunk(Number(spot.id)))}>
+                                        <button className="myspots-buttons" onClick={(e) => dispatch(deleteSpotThunk(Number(spot.id))).then(history.push('/myspots'))}>
                                         Delete Spot
                                         </button>
                                     </>

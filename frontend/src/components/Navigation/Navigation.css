@@ -2,7 +2,7 @@
 .nav-bar-wrapper {
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    width: 100vw;
     height: fit-content;
     position: sticky;
     top: 0px;
@@ -21,7 +21,6 @@
     height: 50px;
     padding-left: 105px;
     padding-right: 25px;
-    align-items: center;
 }
 
 .profile-dropdown {
@@ -41,4 +40,18 @@
 
 .shop-now:hover {
     box-shadow: 0px 2px 5px rgb(231, 231, 231);
+}
+
+.shop-now-profile-button {
+    margin-right: 5%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 25vw;
+}
+
+.shop-now {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
 }
