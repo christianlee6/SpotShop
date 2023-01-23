@@ -21,6 +21,7 @@
     background-color: white;
     text-decoration: none;
     cursor: pointer;
+    margin-right: -10px;
 }
 
 .profile-button:hover {

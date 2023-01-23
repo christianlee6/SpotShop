@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createNewReviewThunk, addReviewImageThunk } from "../../store/reviews";
 
+import './CreateReview.css'
 
 const CreateReview = () => {
     const dispatch = useDispatch();
@@ -43,7 +44,7 @@ const CreateReview = () => {
 
         if (errorsArr.length) return;
 
-        const reviewInfo = { review, stars, url};
+        const reviewInfo = { review, stars};
 
         const newReview = await dispatch(
             createNewReviewThunk(reviewInfo, spotId, sessionUser)
@@ -63,7 +64,8 @@ const CreateReview = () => {
         };
 
         clearData();
-        history.push(`/spots/${spotId}`)
+        // history.push(`/spots/${spotId}`)
+        history.push("/myreviews")
     };
 
     const handleCancel = (e) => {
@@ -122,14 +124,12 @@ const CreateReview = () => {
           <button
           className="review-submit-button"
           >
-            Create Review
+            Submit Review
           </button>
           <button onClick={handleCancel} className="review-submit-button">
             Cancel
           </button >
-
         </form>
-
       </div>
     );
 };

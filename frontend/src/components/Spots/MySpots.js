@@ -1,8 +1,7 @@
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    updateSpotThunk,
-    deleteSpotThunk, getSpotsOfUserThunk,
+    deleteSpotThunk
 } from "../../store/spots";
 
 import noimage from "./images/noimage.png";
@@ -16,17 +15,13 @@ const MySpots = ({ spot }) => {
     let isOwner = false;
     if (sessionUser?.id === spot.ownerId) isOwner = true;
 
-    useEffect(() => {
-        dispatch(getSpotsOfUserThunk(spot.id))
-    },[dispatch, spot])
-
     const deleteHandleClick = async () => {
         if (
             window.confirm(
                 "Are you sure you want to delete this spot? This action is irreversible."
             )
         ) {
-            dispatch(deleteSpotThunk(spot.id));
+            await dispatch(deleteSpotThunk(spot.id));
         }
     };
 

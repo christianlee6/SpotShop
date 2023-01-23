@@ -108,58 +108,58 @@ const EditSpotForm = () => {
     if (!Object.values(spot).length) return null;
 
     return (
-        <div className="edit-form-container">
-            <h2 className="edit-form-header-container">
+        <div className="create-spot-whole-container">
+            <h2 className="create-spot-header-container">
                 Edit Your Spot:
             </h2>
             <div className="validation-errors">
                 {hasSubmitted && errors?.map((error) => (<div key={error}>{error}</div>))}
             </div>
 
-            <div className="edit-form-container edit-form-input-wrapper">
+            <div className="create-spot-form-container form-input-wrapper">
                 <form onSubmit={handleSubmit}>
                     <label>
                         Name:
                         <input type="text" value={name} onChange={updateName}>
                         </input>
                     </label>
-                    <div className="edit-form-input-break"></div>
+                    <div className="form-input-break"></div>
                     <label>
                         Address:
                         <input type="text" value={address} onChange={updateAddress}>
                         </input>
                     </label>
-                    <div className="edit-form-input-break"></div>
+                    <div className="form-input-break"></div>
                     <label>
                         City:
                         <input type="text" value={city} onChange={updateCity}>
                         </input>
                     </label>
-                    <div className="edit-form-input-break"></div>
+                    <div className="form-input-break"></div>
                     <label>
                         State:
                         <input type="text" value={state} onChange={updateState}>
                         </input>
                     </label>
-                    <div className="edit-form-input-break"></div>
+                    <div className="form-input-break"></div>
                     <label>
                         Country:
                         <input type="text" value={country} onChange={updateCountry}>
                         </input>
                     </label>
-                    <div className="edit-form-input-break"></div>
+                    <div className="form-input-break"></div>
                     <label>
                         Description:
                         <textarea type="text" value={description} onChange={updateDescription}>
                         </textarea>
                     </label>
-                    <div className="edit-form-input-break"></div>
+                    <div className="form-input-break"></div>
                     <label>
                         Price:
                         <input type="number" value={price} onChange={updatePrice}>
                         </input>
                     </label>
-                    <div className="edit-form-input-break"></div>
+                    <div className="form-input-break"></div>
                     <button className="submit-button">
                         Update Your Spot!
                     </button>

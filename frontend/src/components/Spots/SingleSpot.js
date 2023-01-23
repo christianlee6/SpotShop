@@ -145,9 +145,9 @@ const LoadSingleSpot = () => {
                 <span>{spot.numReviews} reviews</span>
             </h2>
 
-            <div>
+            <div className="write-review-wrapper">
                 {
-                    sessionUser && !isOwner && <button onClick={handleClick}>Write a Review for this Spot</button>
+                    sessionUser && !isOwner && <button className="write-review-button" onClick={handleClick}>Write a Review for this Spot</button>
                 }
             </div>
             <div className="single-spot-linebreak long"></div>
